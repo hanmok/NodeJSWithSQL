@@ -6,13 +6,15 @@ const pool = mysql.createPool({
 	database:process.env.DB_NAME,
 	password:process.env.DB_PASSWORD
 })
-let sql = "SELECT * FROM posts"
-pool.execute(sql, function(err, result) { 
-	if(err) throw err;
-	// console.log(result)
-	result.forEach((res) => { 
-		console.log(res.title)
-	})
-})
+
+// let sql = "SELECT * FROM posts"
+// pool.execute(sql, function(err, result) { 
+// 	if(err) throw err;
+// 	// console.log(result)
+// 	result.forEach((res) => { 
+// 		console.log(res.title)
+// 	})
+// })
+
 
 module.exports = pool.promise()
