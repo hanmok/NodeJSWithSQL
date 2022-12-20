@@ -33,8 +33,8 @@ class Todo {
 
 	static findAll(userId) {
 		console.log(`findAll called, userId: ${userId}`);
-		// const sql = `SELECT * FROM todo WHERE user_id=${userId}`;
-		const sql = 'SELECT * FROM todo';
+		const sql = `SELECT * FROM todo WHERE user_id=${userId}`;
+		// const sql = 'SELECT * FROM todo';
 		return db.execute(sql);
 	}
 

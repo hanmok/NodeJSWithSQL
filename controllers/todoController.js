@@ -2,12 +2,17 @@ const Todo = require('../models/Todo');
 
 exports.getAllTodos = async (req, res, next) => { 
 	try { 
-		let userId = req.params.id
+		// console.log("params:");
+		// console.log(req.params);
+		// let some = req.query.id;
+		// console.log(some);
+		// let userId = req.params.id;
+		let userId = req.query.id;
 		const [todos, _] = await Todo.findAll(userId);
+		// const [todos, _] = await Todo.findAll(1);
 		res.status(200).json({count: todos.length, todos})
 	} catch (error) {
 		console.log(error);
-		console.log("errrrrr");
 		next(error);
 	}
 }
