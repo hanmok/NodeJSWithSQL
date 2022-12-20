@@ -12,9 +12,8 @@ exports.getAllPosts = async (req, res, next) => {
 }
 
 exports.createNewPost = async (req, res, next) => { 
-
 	try {
-		let {title, body} =  req.body;
+		let {title, body} = req.body;
 		let post = new Post(title, body);
 
 		post = await post.save();

@@ -11,8 +11,8 @@ class Post {
 		let yyyy = d.getFullYear();
 		let mm = d.getMonth() + 1; // zero indexed
 		let dd = d.getDate();
-
 		let createdAtDate = `${yyyy}-${mm}-${dd}`;
+
 		let sql = `
 		INSERT INTO posts(
 			title,
@@ -27,12 +27,10 @@ class Post {
 		`;
 		
 		return db.execute(sql);
-		
 	}
 
 	static findAll() {
 		let sql = "SELECT * FROM posts;";
-
 		return db.execute(sql);
 	}
 	
@@ -40,7 +38,6 @@ class Post {
 		let sql = `SELECT * FROM posts WHERE id = ${id};`;
 		return db.execute(sql);
 	}
-
 }
 
 module.exports = Post;
