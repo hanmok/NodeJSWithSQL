@@ -7,6 +7,7 @@ exports.getAllTodos = async (req, res, next) => {
 		res.status(200).json({count: todos.length, todos})
 	} catch (error) {
 		console.log(error);
+		console.log("errrrrr");
 		next(error);
 	}
 }
@@ -15,7 +16,6 @@ exports.createNewTodo = async (req, res, next) => {
 	try {
 		let {title, userId, specification, priority, targetDate} = req.body;
 		let todo = new Todo(title, userId, specification, priority, targetDate);
-		// todo = await todo.save();
 		await todo.save();
 		res.status(201).json({todo: todo})
 	} catch (error) {
