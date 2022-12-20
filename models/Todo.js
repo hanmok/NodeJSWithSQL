@@ -1,36 +1,39 @@
 const db = require('../config/db');
 
 class Todo {
-	constructor(title, userId, targetDate = new Date(), description = '', priority = 0) {
+	constructor(title, userId, specification, priority, targetDate = new Date()) {
 		this.title = title;
 		this.userId = userId
 		this.targetDate = targetDate;
-		this.description = description;
+		this.specification = specification;
 		this.priority = priority;
+		this.isDone = 0
+		this.id
 	}
+	
+
+	static postSimple(title, userId){
+		return new Todo(title, userId, null, null)
+	}
+
 
 	save() { 
 		const sql = `
 		INSERT INTO todo(
 			title,
 			user_id
-			description,
-			targetDate,
-			priority
 		)
 		VALUES(
 			'${this.title}',
-			'${this.userId}',
-			'${this.targetDate}',
-			'${this.description}',
-			'${this.priority}'
+			${this.userId}
 		)
 		`;
 		return db.execute(sql);
 	}
 
 	static findAll(userId) {
-		const sql = `SELECT * FROM todo WHERE id=${userId}`;
+		console.log(`findAll called, userId: ${userId}`);
+		const sql = `SELECT * FROM todo WHERE user_id=${userId}`;
 		return db.execute(sql);
 	}
 

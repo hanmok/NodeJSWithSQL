@@ -13,10 +13,11 @@ exports.getAllTodos = async (req, res, next) => {
 
 exports.createNewTodo = async (req, res, next) => { 
 	try {
-		let {title, targetDate, description, priority} = req.body;
-		let todo = new Todo(title, targetDate, description, priority);
-		todo = await todo.save();
-		res.status(201).json({message: "Todo created" })
+		let {title, userId, specification, priority, targetDate} = req.body;
+		let todo = new Todo(title, userId, specification, priority, targetDate);
+		// todo = await todo.save();
+		await todo.save();
+		res.status(201).json({todo: todo})
 	} catch (error) {
 		console.log(error);
 		next(error);
