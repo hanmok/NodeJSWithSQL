@@ -41,8 +41,3 @@ class Post {
 }
 
 module.exports = Post;
-// const p = new Post();
-// p.findAll();
-// Post.findAll();
-
-// new Post()
