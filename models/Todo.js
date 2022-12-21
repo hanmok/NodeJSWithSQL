@@ -45,16 +45,19 @@ class Todo {
 
 	static delete(id) {
 		const sql = `DELETE FROM todo WHERE id=${id}`;
+		console.log(`deleting todo id:${id}`)
 		return db.execute(sql);
 	}
 
 	static check(id) {
 		const sql = `UPDATE todo SET isDone=1 WHERE id=${id}`;
+		console.log("check! triggered");
 		return db.execute(sql);
 	}
 	
 	static uncheck(id) {
 		const sql = `UPDATE todo SET isDone=0 WHERE id=${id}`;
+		console.log("unCheck!");
 		return db.execute(sql);
 	}
 }
