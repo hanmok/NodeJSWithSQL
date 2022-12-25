@@ -1,4 +1,6 @@
+require('dotenv').config();
 const db = require('../config/db');
+const jwt = require('jsonwebtoken');
 
 class User {
 	constructor(username, password) {
